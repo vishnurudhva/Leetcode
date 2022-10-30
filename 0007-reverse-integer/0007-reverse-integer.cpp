@@ -7,11 +7,9 @@ public:
             isNegative = true;
             x = abs(x);
         }
-        int xCount = 0;
         int result = 0;
         while (x) {
             if (result > INT_MAX / 10) return 0;
-            xCount++;
             result = (result * 10) + (x % 10);
             x /= 10;
         }
