@@ -22,8 +22,6 @@ public:
         if ((root == p || root == q) && (right == p || right == q)) return root;
         
         if (root == p || root == q) return root;
-        if (left == p || left == q) return left;
-        if (right == p || right == q) return right; 
         
         return left != NULL ? left : right;
     }
