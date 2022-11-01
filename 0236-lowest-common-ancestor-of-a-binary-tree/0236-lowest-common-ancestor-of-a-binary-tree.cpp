@@ -17,9 +17,9 @@ public:
         
         if (left != NULL && right != NULL) return root;
         
-        if ((root == p || root == q) && (left == p || left == q)) return root;
+        if ((root == p || root == q) && left) return root;
         
-        if ((root == p || root == q) && (right == p || right == q)) return root;
+        if ((root == p || root == q) && right) return root;
         
         if (root == p || root == q) return root;
         
