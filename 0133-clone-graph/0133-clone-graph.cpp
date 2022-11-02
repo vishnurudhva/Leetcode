@@ -35,8 +35,7 @@ public:
             for (int i = 0; i < current->neighbors.size(); i++) {
                 Node* nodeX = current->neighbors[i];
                 if (visited.find(nodeX->val) == visited.end()) {
-                    Node* newNode = new Node(nodeX->val);
-                    visited[nodeX->val] = newNode;
+                    visited[nodeX->val] = new Node(nodeX->val);
                     q.push(nodeX);
                 }
                 
