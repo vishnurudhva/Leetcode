@@ -28,12 +28,13 @@ public:
     }
     
     Node* generateAndReturn(Node* node, unordered_map<int, Node*>& visited) {
-        if (visited.find(node->val) != visited.end()) return visited[node->val];
-        Node* newNode = new Node(node->val);
-        visited[newNode->val] = newNode;
-        for (int i = 0; i < node->neighbors.size(); i++) {
-            newNode->neighbors.push_back(generateAndReturn(node->neighbors[i], visited));
+        if (visited.find(node->val) == visited.end()) {
+            Node* newNode = new Node(node->val);
+            visited[newNode->val] = newNode;
+            for (int i = 0; i < node->neighbors.size(); i++) {
+                newNode->neighbors.push_back(generateAndReturn(node->neighbors[i], visited));
+            }
         }
-        return newNode;
+        return visited[node->val];
     }
 };
