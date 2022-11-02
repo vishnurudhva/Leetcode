@@ -24,17 +24,27 @@ public:
     Node* cloneGraph(Node* node) {
         if (node == NULL) return NULL;
         unordered_map<int, Node*> visited;
-        return generateAndReturn(node, visited);
-    }
-    
-    Node* generateAndReturn(Node* node, unordered_map<int, Node*>& visited) {
-        if (visited.find(node->val) == visited.end()) {
-            Node* newNode = new Node(node->val);
-            visited[newNode->val] = newNode;
-            for (int i = 0; i < node->neighbors.size(); i++) {
-                newNode->neighbors.push_back(generateAndReturn(node->neighbors[i], visited));
+        queue<Node*> q;
+        q.push(node);
+        Node* root = new Node(node->val);
+        visited[node->val] = root;
+        while (!q.empty()) {
+            Node* current = q.front();
+            q.pop();
+            
+            for (int i = 0; i < current->neighbors.size(); i++) {
+                Node* nodeX = current->neighbors[i];
+                if (visited.find(nodeX->val) == visited.end()) {
+                    Node* newNode = new Node(nodeX->val);
+                    visited[nodeX->val] = newNode;
+                    q.push(nodeX);
+                }
+                
+                visited[current->val]->neighbors.push_back(visited[nodeX->val]);
             }
         }
-        return visited[node->val];
+        
+        return root;
     }
+
 };
