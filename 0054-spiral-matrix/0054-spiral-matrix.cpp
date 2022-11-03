@@ -10,12 +10,12 @@ public:
             for (int x = i + 1; x < row; x++)
                 result.push_back(matrix[x][col - 1]);
             
-            for (int y = col - 2; y > j; y--) {
+            for (int y = col - 2; y >= j; y--) {
                 if (i < row - 1)
                     result.push_back(matrix[row - 1][y]);
             }
             
-            for (int x = row - 1; x > i; x--) {
+            for (int x = row - 2; x > i; x--) {
                 if (j < col - 1)
                     result.push_back(matrix[x][j]);
             }
