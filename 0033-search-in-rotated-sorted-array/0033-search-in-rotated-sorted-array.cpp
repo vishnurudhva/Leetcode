@@ -13,7 +13,7 @@ public:
                 else
                     i = mid + 1;
             } else {
-                if (target >= nums[mid] && target <= nums[nums.size() - 1])
+                if (target > nums[mid] && target <= nums[nums.size() - 1])
                     i = mid + 1;
                 else
                     j = mid - 1;
